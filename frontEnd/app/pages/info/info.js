@@ -1,12 +1,11 @@
 import {Page, NavController, NavParams} from 'ionic-angular';
 import {BeerService} from '../services/BeerService';
-import {InfoPage} from '../info/info';
 
 @Page({
-  templateUrl: 'build/pages/list/list.html',
+  templateUrl: 'build/pages/info/info.html',
   providers: [BeerService]
 })
-export class ListPage {
+export class InfoPage {
   static get parameters() {
     return [[NavController], [BeerService]];
   }
@@ -28,6 +27,5 @@ export class ListPage {
 
   itemTapped(event, item) {
     console.log(item);
-    this.nav.push(InfoPage, {item});
   }
 }
