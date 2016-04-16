@@ -1,36 +1,31 @@
 import {Page, NavController, NavParams} from 'ionic-angular';
-
+import {BeerService} from '../services/BeerService';
 
 @Page({
-  templateUrl: 'build/pages/list/list.html'
+  templateUrl: 'build/pages/list/list.html',
+  providers: [BeerService]
 })
 export class ListPage {
   static get parameters() {
-    return [[NavController], [NavParams]];
+    return [[NavController], [BeerService]];
   }
 
-  constructor(nav, navParams) {
+  constructor(nav, beerService) {
     this.nav = nav;
-
-    // If we navigated to this page, we will have an item available as a nav param
-    this.selectedItem = navParams.get('item');
-
-    this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
-    'american-football', 'boat', 'bluetooth', 'build'];
-
-    this.items = [];
-    for(let i = 1; i < 11; i++) {
-      this.items.push({
-        title: 'Item ' + i,
-        note: 'This is item #' + i,
-        icon: this.icons[Math.floor(Math.random() * this.icons.length)]
-      });
-    }
+    this.beerService = beerService;
   }
+
+  searchBeer(event, key) {
+    if(event.target.value.length > 2) {
+      this.beerService.searchBeer(event.target.value).subscribe(
+        data => {this.beerList = data.results; console.log(data);},
+        err => this.logError(err),
+        () => console.log('Beer Search Complete')
+      );
+    }
+  }   
 
   itemTapped(event, item) {
-    this.nav.push(ListPage, {
-      item: item
-    })
+    console.log('itemTapped');
   }
 }

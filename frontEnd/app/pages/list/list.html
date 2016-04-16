@@ -6,16 +6,25 @@
 </ion-navbar>
 
 <ion-content>
+
+  
   <ion-list>
-    <button ion-item *ngFor="#item of items" (click)="itemTapped($event, item)">
-      <ion-icon [name]="item.icon" item-left></ion-icon>
-      {{item.title}}
-      <div class="item-note" item-right>
-        {{item.note}}
-      </div>
-    </button>
+
+    <!-- begin search box -->
+    <ion-header>      
+      <ion-item>
+        <ion-input type="text" placeholder="Search for beer..." (input)="searchBeer($event, searchKey)"></ion-input>
+      </ion-item>
+    </ion-header>
+    <!-- end search box -->
+
+    <ion-item *ngFor="#beer of beerList" (click)="itemTapped($event, beer)">
+      <ion-avatar item-left>
+        <img src="https://image.tmdb.org/t/p/w92{{beer.poster_path}}"/>
+      </ion-avatar>
+      <h2>{{beer.original_title}}</h2>
+      <p class="item-description">{{beer.overview}}</p>
+    </ion-item>
   </ion-list>
-  <div *ngIf="selectedItem" padding>
-    You navigated here from <b>{{selectedItem.title}}</b>
-  </div>
+
 </ion-content>
