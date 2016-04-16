@@ -28,6 +28,6 @@ export class ListPage {
 
   itemTapped(event, item) {
     console.log(item);
-    this.nav.push(InfoPage, {item});
+    this.nav.push(InfoPage, {'item': item});
   }
 }
