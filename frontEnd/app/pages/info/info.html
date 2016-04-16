@@ -2,9 +2,12 @@
   <button menuToggle>
     <ion-icon name="menu"></ion-icon>
   </button>
-  <ion-title>Info</ion-title>
+  <ion-title>{{params.original_title}}</ion-title>
 </ion-navbar>
-
 <ion-content>
-  hello
+
+  <p (click)="orderBeer($event)" >
+
+    {{params.overview}}
+  </p>
 </ion-content>

@@ -12,20 +12,9 @@ export class InfoPage {
   constructor(nav, beerService, navParams) {
     this.nav = nav;
     this.beerService = beerService;
-    this.params = navParams.get('item'));
+    this.params = navParams.get('item');
+    // console.log(params);
+    // console.log(this.params);
   }
 
-  searchBeer(event, key) {
-    if(event.target.value.length > 2) {
-      this.beerService.searchBeer(event.target.value).subscribe(
-        data => {this.beerList = data.results; console.log(data);},
-        err => this.logError(err),
-        () => console.log('Beer Search Complete')
-      );
-    }
-  }
-
-  itemTapped(event, item) {
-    console.log(item);
-  }
 }
