@@ -2,19 +2,20 @@
   <button menuToggle>
     <ion-icon name="menu"></ion-icon>
   </button>
-  <ion-title>Lists</ion-title>
+  <ion-title>Search for Beer</ion-title>
 </ion-navbar>
 
 <ion-content>
 
 
-  <ion-list>
+  <ion-list padding>
 
     <!-- begin search box -->
     <ion-header>
       <ion-item>
-        <ion-input type="text" placeholder="Search for beer..." (input)="searchBeer($event, searchKey)"></ion-input>
+        <ion-input type="text" value="119 W 24th St, New York, NY 10011" placeholder=""></ion-input>
       </ion-item>
+      <button block (click)="searchBeer()">Search</button>
     </ion-header>
     <!-- end search box -->
 
