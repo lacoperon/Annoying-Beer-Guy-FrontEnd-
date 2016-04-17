@@ -4,15 +4,25 @@
   </button>
   <ion-title>{{params.original_title}}</ion-title>
 </ion-navbar>
-<ion-content>
+<ion-content style="background-image: url(http://s23.postimg.org/72n58v98r/background3.jpg);">
+  <ion-card>
 
-<ion-row><ion-col width-40 offset-10>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Big_Bear_Valley,_California.jpg" />
-</ion-col>
+    <ion-card-header>
+      Card Header
+    </ion-card-header>
 
-<ion-col width-50>
-{{params.overview}}
-</ion-col></ion-row>
+    <ion-card-content>
+      <ion-row><ion-col width-40 offset-10>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Big_Bear_Valley,_California.jpg" />
+      </ion-col>
+
+      <ion-col width-50>
+      {{params.overview}}
+      </ion-col></ion-row>
+    </ion-card-content>
+
+  </ion-card>
+
 
 
 </ion-content>
