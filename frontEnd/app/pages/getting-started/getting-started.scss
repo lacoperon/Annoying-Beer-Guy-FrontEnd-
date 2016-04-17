@@ -1,33 +1,13 @@
 .getting-started {
 
-  div {
-    background-color: black;
-  }
-
-  p {
-    margin: 0px 0;
-    line-height: 22px;
-    font-size: 14px;
-  }
-
-  .login{
-    margin: auto;
-  }
-
-  .ulabel{
-    margin-top: 1vh;
-    font-size: 16px;
-    margin-left: auto;
-  }
-
-  .spacer {
-    height: 22.5vh;
-  }
-
-  .spacer2 {
-    height: 15vh;
-  }
-
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  width: 80%;
+  height: 246px;
+  margin: auto;
+  z-index: 2;
+  position: relative;
   input {
     margin-top: 0vh;
     height: 7vh;
