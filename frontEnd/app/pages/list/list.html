@@ -21,11 +21,16 @@
     <!-- end search box -->
 
     <ion-item *ngFor="#beer of beerList" (click)="itemTapped($event, beer)">
-      <ion-avatar item-left>
-        <img src="https://image.tmdb.org/t/p/w92{{beer.poster_path}}"/>
-      </ion-avatar>
-      <h2>{{beer.original_title}}</h2>
-      <p class="item-description">{{beer.overview}}</p>
+      <ion-thumbnail item-left>
+        <img src="{{beer.image}}">
+      </ion-thumbnail>
+      <h2>{{beer.name}}</h2>
+      <p>
+        <span class="beer-info-label">${{beer.price}}</span>
+        <span class="beer-info-label" *ngFor="#category of beer.categories">
+          {{category}}
+        </span>
+      </p>
     </ion-item>
   </ion-list>
 
