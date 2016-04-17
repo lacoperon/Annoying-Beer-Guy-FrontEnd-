@@ -11,7 +11,7 @@ export class BeerService {
 	}
 
 	searchBeer(beerName) {
-		var url = 'http://annoying-beer-guy.mybluemix.net/beer?address=1129%2014th%20St%20New%20York%20NY&' + 'abv=9';
+		var url = 'http://annoying-beer-guy.mybluemix.net/beer?address=1129%2014th%20St%20New%20York%20NY&' + 'abv=4';
 		this.response = this.http.get(url).map(res => res.json());
 	  return this.response;
 	}

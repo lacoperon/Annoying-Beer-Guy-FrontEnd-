@@ -15,12 +15,18 @@
       <ion-item>
         <ion-input type="text" value="119 W 24th St, New York, NY 10011" placeholder=""></ion-input>
       </ion-item>
-      <button block (click)="searchBeer()">Preferences</button>
+      <!-- <button block (click)="searchBeer()">Preferences</button> -->
       <button block (click)="searchBeer()">Search</button>
+
+      <div *ngIf="categoryList.length > 0" text-center padding>
+        <span class="white-label" (click)="clearFilter($event)">All</span>
+        <span class="white-label" *ngFor="#category of categoryList" (click)="filterByCategory($event, category)">{{category}}</span>
+      </div>
+
     </ion-header>
     <!-- end search box -->
 
-    <ion-item *ngFor="#beer of beerList" (click)="itemTapped($event, beer)">
+    <ion-item *ngFor="#beer of beerListDisplay" (click)="itemTapped($event, beer)">
       <ion-thumbnail item-left>
         <img src="{{beer.image}}">
       </ion-thumbnail>
