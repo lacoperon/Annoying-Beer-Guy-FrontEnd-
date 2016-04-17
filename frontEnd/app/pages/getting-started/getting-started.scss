@@ -1,13 +1,7 @@
 .getting-started {
 
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-  width: 80%;
-  height: 246px;
-  margin: auto;
-  z-index: 2;
-  position: relative;
+  background-image: url(http://s9.postimg.org/usgwjq0qn/background.jpg);
+
   input {
     margin-top: 0vh;
     height: 7vh;
@@ -16,6 +10,15 @@
 
   input {
     margin: auto;
+  }
+
+  div {
+    background-color: rgba(88, 86, 88, 0.56);
+    border-radius: 20px;
+  }
+
+  .spacer {
+    height: 25vh;
   }
 
 }
