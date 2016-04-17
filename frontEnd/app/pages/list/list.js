@@ -1,4 +1,5 @@
 import {Page, NavController, NavParams} from 'ionic-angular';
+import {Modal, ViewController} from 'ionic-angular';
 import {BeerService} from '../services/BeerService';
 import {InfoPage} from '../info/info';
 
