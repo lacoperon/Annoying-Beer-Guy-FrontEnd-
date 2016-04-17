@@ -16,12 +16,17 @@ export class ListPage {
     this.nav = nav;
     this.beerService = beerService;
     this.categoryList = [];
+    this.showSearchBox = true;
+    this.searchBtnText = "Search";
+    this.currentCategory = "";
   }
 
   searchBeer() {
+      this.searchBtnText = "Searching..."
       this.beerService.searchBeer('').subscribe(
         data => {
           self = this;
+          this.showSearchBox = false;
           this.beerList = data.beers;
           let categoryKeys = {}
           data.beers.forEach(function(beer) {
@@ -37,12 +42,16 @@ export class ListPage {
           console.log(this.categoryList);
         },
         err => this.logError(err),
-        () => console.log('Beer Search Complete')
+        () => {
+          this.searchBtnText = "Search";
+          console.log('Beer Search Complete');
+        }
       );
   }
 
   filterByCategory(event, cat) {
     console.log('filtering by ' + cat);
+    this.currentCategory = cat;
     this.beerListDisplay = this.beerList.filter(function (beer) {
       let result = false;
       beer.categories.forEach(function (val) {
@@ -57,6 +66,14 @@ export class ListPage {
 
   clearFilter(event) {
     this.beerListDisplay = this.beerList;
+  }
+
+  clearSearch(event) {
+    this.beerList = [];
+    this.beerListDisplay = [];
+    this.showSearchBox = true;
+    this.categoryList = [];
+    this.currentCategory = '';
   }
 
   itemTapped(event, beer) {

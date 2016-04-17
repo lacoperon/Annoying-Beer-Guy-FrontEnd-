@@ -12,13 +12,20 @@
 
     <!-- begin search box -->
     <ion-header>
-      <ion-item>
-        <ion-input type="text" value="119 W 24th St, New York, NY 10011" placeholder=""></ion-input>
-      </ion-item>
-      <!-- <button block (click)="searchBeer()">Preferences</button> -->
-      <button block (click)="searchBeer()">Search</button>
 
-      <div *ngIf="categoryList.length > 0" text-center padding>
+      <div [hidden]="showSearchBox" text-center style="background-color: #FFF" padding>
+        <h3>Search Result<span *ngIf="currentCategory">: {{currentCategory}}</span></h3>
+        <div class="small-search-btn" (click)="clearSearch()">Search Again</div>
+      </div>
+
+      <div [hidden]="!showSearchBox">
+        <ion-item>
+          <ion-input type="text" value="119 W 24th St, New York, NY 10011" placeholder=""></ion-input>
+        </ion-item>
+        <button block (click)="searchBeer()">{{searchBtnText}}</button>
+      </div>
+
+      <div *ngIf="categoryList.length > 1" text-center padding>
         <span class="white-label" (click)="clearFilter($event)">All</span>
         <span class="white-label" *ngFor="#category of categoryList" (click)="filterByCategory($event, category)">{{category}}</span>
       </div>
