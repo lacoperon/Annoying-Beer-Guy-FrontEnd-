@@ -3,16 +3,59 @@
   <button menuToggle>
     <ion-icon name="menu"></ion-icon>
   </button>
-  <ion-title>Getting Started</ion-title>
+  <ion-title>Log on, Brew on</ion-title>
 </ion-navbar>
 
 
 <ion-content padding class="getting-started">
+  <ion-col text-center>
+    <h3>Annoying Beer Guy</h3>
+  </ion-col>
+  <ion-row>
+    <div class=spacer>
+    </div>
+  </ion-row>
 
-  <h3>Annoying Beer Guide</h3>
+<ion-row>
+  <div class="login">
+    <ion-row>
+    <ion-col width-30>
+      <p class='ulabel'>
+        Username:
+      </p>
+    </ion-col>
+  <ion-col width-70>
+      <input type="text">
+  </ion-col>
+  </ion-row>
+  </div>
+</ion-row>
 
-  <p>
-    <button (click)="doSearchBtnClick($event)">Search for Beer</button>
-  </p>
+<ion-row>
+  <div class="login">
+    <ion-row>
+    <ion-col width-30>
+      <p class='ulabel'>
+        Password :
+      </p>
+    </ion-col>
+  <ion-col width-70>
+      <input type="password">
+  </ion-col>
+  </ion-row>
+  </div>
+</ion-row>
+
+<ion-row>
+  <div class=spacer2>
+  </div>
+</ion-row>
+
+
+<ion-col text-center>
+    <p>
+      <button (click)="doSearchBtnClick($event)">Search for Beer</button>
+    </p>
+</ion-col>
 
 </ion-content>
