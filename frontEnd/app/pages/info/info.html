@@ -2,27 +2,29 @@
   <button menuToggle>
     <ion-icon name="menu"></ion-icon>
   </button>
-  <ion-title>{{params.original_title}}</ion-title>
+  <ion-title>{{beer.name}}</ion-title>
 </ion-navbar>
 <ion-content style="background-image: url(http://s23.postimg.org/72n58v98r/background3.jpg);">
+
   <ion-card>
-
-    <ion-card-header>
-      Card Header
-    </ion-card-header>
-
+    <img src="{{beer.image}}"/>
     <ion-card-content>
-      <ion-row><ion-col width-40 offset-10>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Big_Bear_Valley,_California.jpg" />
-      </ion-col>
-
-      <ion-col width-50>
-      {{params.overview}}
-      </ion-col></ion-row>
+      
+      <ion-card-title>
+        {{beer.name}}
+      </ion-card-title>
+      
+      <p [innerHTML]="beer.description"></p>
+      
+      <p>
+        <strong>Categories:</strong>
+        <span *ngFor="#category of beer.categories">{{category}}</span>
+      </p>
+        
+      <p>  
+        <strong>Price:</strong> ${{beer.price}}
+      </p>
     </ion-card-content>
-
   </ion-card>
-
-
 
 </ion-content>

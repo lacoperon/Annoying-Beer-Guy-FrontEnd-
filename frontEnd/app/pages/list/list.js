@@ -25,8 +25,8 @@ export class ListPage {
       );
   }
 
-  itemTapped(event, item) {
-    console.log(item);
-    this.nav.push(InfoPage, {'item': item});
+  itemTapped(event, beer) {
+    console.log(beer);
+    this.nav.push(InfoPage, {'beer': beer});
   }
 }

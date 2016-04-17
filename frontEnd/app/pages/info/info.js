@@ -12,9 +12,7 @@ export class InfoPage {
   constructor(nav, beerService, navParams) {
     this.nav = nav;
     this.beerService = beerService;
-    this.params = navParams.get('item');
-    // console.log(params);
-    // console.log(this.params);
+    this.beer = navParams.get('beer');
   }
 
 }
