@@ -15,6 +15,8 @@ export class ListPage {
   constructor(nav, beerService) {
     this.nav = nav;
     this.beerService = beerService;
+    this.beerList = [];
+    this.beerListDisplay = [];
     this.categoryList = [];
     this.showSearchBox = true;
     this.searchBtnText = "Search";
@@ -25,20 +27,22 @@ export class ListPage {
       this.searchBtnText = "Searching..."
       this.beerService.searchBeer('').subscribe(
         data => {
+          console.log(data);
           self = this;
           this.showSearchBox = false;
           this.beerList = data.beers;
           let categoryKeys = {}
           data.beers.forEach(function(beer) {
-            beer.categories.forEach(function(category) {
-              if (!categoryKeys[category]) {
-                self.categoryList.push(category);
-              }
-              categoryKeys[category] = 1;
-            });
+            if (beer.categories) {
+              beer.categories.forEach(function(category) {
+                if (!categoryKeys[category]) {
+                  self.categoryList.push(category);
+                }
+                categoryKeys[category] = 1;
+              });
+            }
           });
           this.beerListDisplay = data.beers;
-          console.log(data);
           console.log(this.categoryList);
         },
         err => this.logError(err),
@@ -53,13 +57,14 @@ export class ListPage {
     console.log('filtering by ' + cat);
     this.currentCategory = cat;
     this.beerListDisplay = this.beerList.filter(function (beer) {
-      let result = false;
-      beer.categories.forEach(function (val) {
-        if (val == cat) {
-          // console.log('matched');
-          result = true;
-        }
-      });
+      var result = false;
+      if (beer.categories) {
+        beer.categories.forEach(function (val) {
+          if (val == cat) {
+            result = true;
+          }
+        });
+      }
       return result;
     });
   }
@@ -74,6 +79,10 @@ export class ListPage {
     this.showSearchBox = true;
     this.categoryList = [];
     this.currentCategory = '';
+  }
+
+  selectBeer(beer) {
+    beer.selected = true;
   }
 
   itemTapped(event, beer) {

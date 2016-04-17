@@ -18,7 +18,7 @@
         <div class="small-search-btn" (click)="clearSearch()">Search Again</div>
       </div>
 
-      <div [hidden]="!showSearchBox">
+      <div [hidden]="!showSearchBox" class="search-box">
         <ion-item>
           <ion-input type="text" value="119 W 24th St, New York, NY 10011" placeholder=""></ion-input>
         </ion-item>
@@ -26,8 +26,8 @@
       </div>
 
       <div *ngIf="categoryList.length > 1" text-center padding>
-        <span class="white-label" (click)="clearFilter($event)">All</span>
-        <span class="white-label" *ngFor="#category of categoryList" (click)="filterByCategory($event, category)">{{category}}</span>
+        <div class="white-label" (click)="clearFilter($event)">All</div>
+        <div class="white-label" *ngFor="#category of categoryList" (click)="filterByCategory($event, category)">{{category}}</div>
       </div>
 
     </ion-header>
@@ -35,11 +35,12 @@
 
     <ion-item *ngFor="#beer of beerListDisplay" (click)="itemTapped($event, beer)">
       <ion-thumbnail item-left>
-        <img src="{{beer.image}}">
+        <img [hidden]="!beer.image" src="{{beer.image}}">
+        <img [hidden]="beer.image" src="images/beer_bottle.png">
       </ion-thumbnail>
       <h2>{{beer.name}}</h2>
       <p>
-        <span class="beer-info-label">${{beer.price}}</span>
+        <span *ngIf="beer.price" class="beer-info-label">${{beer.price}}</span>
         <span class="beer-info-label" *ngFor="#category of beer.categories">
           {{category}}
         </span>

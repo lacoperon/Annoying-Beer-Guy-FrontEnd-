@@ -7,23 +7,27 @@
 <ion-content style="background-image: url(http://s23.postimg.org/72n58v98r/background3.jpg);">
 
   <ion-card>
-    <img src="{{beer.image}}"/>
+    <img [hidden]="!beer.image" src="{{beer.image}}">
+    <img [hidden]="beer.image" src="images/beer_bottle.png" style="margin: 20px">
     <ion-card-content>
       
-      <ion-card-title>
-        {{beer.name}}
-      </ion-card-title>
+
+      <h2 style="font-size: 1.5em; font-weight: bold">{{beer.name}}</h2>
+
       
-      <p [innerHTML]="beer.description"></p>
+      <p [hidden]="!beer.description" [innerHTML]="beer.description"></p>
       
-      <p>
+      <p [hidden]="!beer.categories">
         <strong>Categories:</strong>
         <span *ngFor="#category of beer.categories">{{category}}</span>
       </p>
         
-      <p>  
+      <p [hidden]="!beer.price">  
         <strong>Price:</strong> ${{beer.price}}
       </p>
+
+      <button *ngIf="beer.available" block click="window.open(encodeURI(beer.link), '_system');">Order from Delivery.com</button>
+
     </ion-card-content>
   </ion-card>
 
