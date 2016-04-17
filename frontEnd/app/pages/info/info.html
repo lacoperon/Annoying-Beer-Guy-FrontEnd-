@@ -26,7 +26,7 @@
         <strong>Price:</strong> ${{beer.price}}
       </p>
 
-      <button *ngIf="beer.available" block click="window.open(encodeURI(beer.link), '_system');">Order from Delivery.com</button>
+      <a class="button block text-center" *ngIf="beer.available" block href="{{beer.link}}" target="_blank">Order from Delivery.com</a>
 
     </ion-card-content>
   </ion-card>
